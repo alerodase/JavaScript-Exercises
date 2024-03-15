@@ -4,5 +4,7 @@
 // información sobre la función de javascript ``Math.random()``
 
 function rollDice(sides){
-
+const dado= Math.floor(Math.random() * sides)+1
+return dado
 }
+console.log(rollDice(10));
