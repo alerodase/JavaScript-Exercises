@@ -37,13 +37,36 @@ const users = [
     },
 ]
 
-vecesAñadido=[]
+// vecesAñadido=[]
+
+// for (const user of users) {
+//     for (const sound in user.favoritesSounds) {
+        
+//         if (!vecesAñadido.some(item => item.sonido === sound)){
+//            vecesAñadido.push({sonido:sound})
+//         if(sound){
+//            let count= sound++
+//             vecesAñadido.push({cantidad:count[sound]})
+//         }
+//     }
+    
+//     }
+// }
+
+// console.log(vecesAñadido);
+
+const vecesAñadido = [];
 
 for (const user of users) {
-    for (const sound in user.favoritesSounds) {
-        if(!vecesAñadido.includes(sound))
-       vecesAñadido.push({sonido:sound})
-       
+    for (const sound in user.favoritesSounds) {;
+        
+        if (!vecesAñadido.some(item => item.sonido === sound)) {
+            vecesAñadido.push({ sonido: sound, cantidad: 1 });
+        } else {
+            const soundItem = vecesAñadido.find(item => item.sonido === sound);
+            soundItem.cantidad++;
+        }
     }
 }
+
 console.log(vecesAñadido);
