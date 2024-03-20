@@ -9,19 +9,19 @@
 const userAnwsers = [];
 
 function confirmExample(desc){
-    confirm(desc)
+   return confirm(desc)
 }
 
 function promptExample(desc){
-   prompt(desc)
+   return prompt(desc)
 }
 
 function father(desc, cb){
-    userAnwsers.push(cb(desc))
+    userAnwsers.push({Pregunta:desc, Respuesta:cb(desc)})
 }
 
-father("soy un texto1", confirmExample)
-father("soy un texto2", promptExample)
+father("¿Quieres continuar?", confirmExample)
+father("Añade tu nombre", promptExample)
 
 console.log(userAnwsers);
 // guia de confirm y prompt
