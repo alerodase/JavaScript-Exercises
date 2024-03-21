@@ -6,8 +6,7 @@ const baseUrl = 'https://api.nationalize.io?name=';
 
 const input=document.querySelector("input")
 const button=document.querySelector("button")
-const p = document.createElement("p");
-document.body.appendChild(p)
+
 
 
 async function obtener(){
@@ -15,9 +14,13 @@ async function obtener(){
     const api= await fetch(finalUrl);
     const response= await api.json();
     // p.innerHTML=JSON.stringify(response);
-    for (let i = 0; i < response.length; i++) {
+    for (let i = 0; i < response.country.length; i++) {
+        const p = document.createElement("p");
+   
+        // document.p.querySelector("p")
         p.innerHTML=`el nombre ${input.value} tiene un ${Math.round(
-        response.country[i].probability * 100)}% de ser de ${response.country[i].countre_id}`   
+        response.country[i].probability * 100)}% de ser de ${response.country[i].country_id}`   
+        document.body.appendChild(p) 
     }
     console.log(response);
 }
