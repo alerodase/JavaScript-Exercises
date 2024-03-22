@@ -12,8 +12,7 @@ async function getData(){
     const data= await fetch("http://localhost:3000/diary");
     const res= await data.json()
     entradasDiario= await res.sort((a,b)=>new Date(a.date).getTime()- new Date(b.date).getTime())
-    // const p = document.createElement("p")
-    // document.body.appendChild(p)
+
     console.log(entradasDiario)
     for (let i = 0; i < res.length; i++) {
  
