@@ -7,3 +7,5 @@ La idea es crear una galería con los planetas, que podemos obtener del endpoint
 Además de esto, agrega un buscador para poder filtrar los personajes por nombre una vez que has seleccionado el planeta. Por lo tanto, deberemos incluir el input debajo del planeta y encima de los personajes listados.
 
 Como extra podríamos hacer que si haces click a un personaje salga la descripción debajo. Como extra del extra haz que la descripción se oculte si vuelves a hacer click en el mismo personaje.
+
+json-server --watch C:\Users\alero\OneDrive\Escritorio\Upgrade\JavaScrip\ejerciciosJs\JavaScript-Exercises\exercise-4.js
