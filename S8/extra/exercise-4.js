@@ -14,37 +14,69 @@ async function getPlanets() {
   const api = await fetch('http://localhost:3000/planets');
   const res = await api.json();
   console.log(res);
+  const characterDiv = document.createElement('div');
+  characterDiv.setAttribute("id", "character-loaded")
+  characterDiv.setAttribute("style", "display:flex")
 
   for (let i = 0; i < res.length; i++) {
     const divImg = document.querySelector('div[data-function="planets"]');
-    const characterDiv = document.createElement('div');
 
-    divImg.appendChild(characterDiv);
+    divPlanet=document.createElement("div")
+    divImg.appendChild(divPlanet)
     const imgPlanet = document.createElement('img');
     imgPlanet.setAttribute('src', res[i].image);
-    imgPlanet.setAttribute('style', 'margin:50px; height:25%; width:25%');
-    divImg.appendChild(imgPlanet);
+    divPlanet.setAttribute('style', 'margin:50px; height:25%; width:25%');
+    imgPlanet.setAttribute('style', 'margin:50px; height:100%; width:100%');
+    divPlanet.appendChild(imgPlanet);
+    divPlanet.appendChild(characterDiv)
+    const divInput=document.createElement("div")
+    divPlanet.appendChild(divInput)
+    divPlanet.insertBefore(divInput,characterDiv)
+
+
 
     async function getCharacter() {
-;
       const apiCharacter = await fetch(`http://localhost:3000/characters?idPlanet=${res[i].id}`);
       const characters = await apiCharacter.json();
-      for (let j = 0; j < characters.length; j++) {
-        const characterCard = document.createElement('div');
-        const characterName = document.createElement('h4');
-        characterName.textContent = `${characters[j].name}`;
-        const characterAvatar = document.createElement('img');
-        characterAvatar.setAttribute('src', `${characters[j].avatar}`);
-        characterAvatar.setAttribute('style', `width:25%; height:25%`);
 
-        characterDiv.appendChild(characterCard);
-        characterCard.appendChild(characterName);
-        characterCard.appendChild(characterAvatar);
+      const input=document.createElement("input")
+      divInput.appendChild(input)
+
+      for (let j = 0; j < characters.length; j++) {
+
+
       }
+      // input.addEventListener("input", async ()=>{
+      //   characterDiv.innerHTML=""
+      //   characters.filter((x)=>x.name.includes(input.value))
+      //   getCharacter()
+      //   })
     }
     imgPlanet.addEventListener('click', () => {
+      if(characterDiv.childElementCount===0){
       getCharacter();
-    });
+}
+    });    
   }
 }
 getPlanets();
+
+async function getCharacterData(characterId){
+  const res= await fetch(`http://localhost:3000/characters/${characterId}`)
+  const data= await res.json()
+return data
+}
+
+async function pintarUnCharacter(characterId){
+  const characters= await getCharacterData(characterId)
+
+  const characterCard = document.createElement('div');
+  const characterName = document.createElement('h4');
+  characterName.textContent = `${characters[characterId].name}`;
+  const characterAvatar = document.createElement('img');
+  characterAvatar.setAttribute('src', `${characters[characterId].avatar}`);
+  characterAvatar.setAttribute('style', `width:50%; height:50%`);
+  characterDiv.appendChild(characterCard);
+  characterCard.appendChild(characterName);
+  characterCard.appendChild(characterAvatar)
+}
