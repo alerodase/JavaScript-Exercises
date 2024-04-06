@@ -15,9 +15,61 @@ async function getAllCharacters(){
     return res
 }
 
-async function drawOneCharacter(){
+async function getOneCharacter(characterId){
+    const api= await fetch(`http://localhost:3000/characters/${characterId}`)
+    const res=await api.json()
+    console.log(res);
+    return res
+}
+
+async function drawOneCharacter(characterId){
+const character= await getOneCharacter(characterId)
 const characterCard=document.createElement("div")
 characterCard.setAttribute("class", "b-gallery__item")
-gallery.appendChild(characterCard)
+
+const characterName=document.createElement("p")
+characterName.textContent=`Name : ${character.name}`
+characterName.setAttribute("class","b-gallery__text")
+
+const imgContainer=document.createElement("img")
+imgContainer.setAttribute("class","b-gallery__img")
+imgContainer.setAttribute("src", character.image)
+
+characterCard.appendChild(characterName)
+characterCard.appendChild(imgContainer)
+
+gallery.append(characterCard)
 
 }
+
+// async function drawAllCharacters(){
+//     const characters= await getAllCharacters()
+//     characters.forEach(character => {
+//         drawOneCharacter(character.id)
+//     });
+// }drawAllCharacters()
+
+let currentPage=0
+
+async function drawFiveCharacters(){
+    const api= await fetch(`http://localhost:3000/characters?`)
+    const res=await api.json()
+    for (let i = currentPage*5; i < currentPage*5+5; i++) {
+           await drawOneCharacter(res[i].id);
+    }
+    console.log(currentPage);
+}drawFiveCharacters()
+
+const btn=document.getElementById("btn")
+btn.setAttribute("class","b-btn")
+btn.textContent="Cargar más"
+document.body.appendChild(btn)
+
+
+btn.addEventListener("click", async ()=>{
+        currentPage++
+await drawFiveCharacters()
+if(currentPage===3){
+    btn.style.display="none"
+}})   
+
