@@ -1,12 +1,50 @@
+body{
+    background-image: url("./public/exercise-1/universe.svg");
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
 .b-grid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 10px;
 }
 
 .b-grid img {
-    width: 100px;
-    margin: 10px;
+    width: 150px;
+    height: 200px;
+    margin: 10px 25%;
     border: 3px solid #48ffc2;
     border-radius: 10px;
     background-color: aquamarine;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.5s;
+    cursor: pointer;
 }
+
+/* .card{
+    width: 150px;
+    height: 200px;
+    background-color: rgba(0, 0, 0, 0.5) ;
+ ;
+}
+
+.card-img{
+    width: 120px;
+    height: 120px;
+    padding: 15px;
+} */
+
+.card-name{
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    padding-bottom: 15px;
+}
+.b-grid img:hover {
+    transform: scale(1.1);
+    transition: transform 0.5s;
+}
+
