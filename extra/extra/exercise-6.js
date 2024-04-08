@@ -1,8 +1,3 @@
-Al siguiente javascript no funciona como deberia...podrias arreglarlo?
-
-Deberia de imprimir por consola "elGato".
-
-```js
 const user = {name: "elGato", surname: "ConZancos"}
 
 function a(user){
@@ -15,4 +10,3 @@ function b(name){
 }
 
 a(user);
-```
