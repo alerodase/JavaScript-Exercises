@@ -8,12 +8,6 @@
 
 const gallery= document.querySelector(`div[data-fn="characters"]`)
 
-async function getAllCharacters(){
-    const api= await fetch(`http://localhost:3000/characters`)
-    const res=await api.json()
-    console.log(res);
-    return res
-}
 
 async function getOneCharacter(characterId){
     const api= await fetch(`http://localhost:3000/characters/${characterId}`)
@@ -42,17 +36,10 @@ gallery.append(characterCard)
 
 }
 
-// async function drawAllCharacters(){
-//     const characters= await getAllCharacters()
-//     characters.forEach(character => {
-//         drawOneCharacter(character.id)
-//     });
-// }drawAllCharacters()
-
 let currentPage=0
 
 async function drawFiveCharacters(){
-    const api= await fetch(`http://localhost:3000/characters?`)
+    const api= await fetch(`http://localhost:3000/characters`)
     const res=await api.json()
     for (let i = currentPage*5; i < currentPage*5+5; i++) {
            await drawOneCharacter(res[i].id);
