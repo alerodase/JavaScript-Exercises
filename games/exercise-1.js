@@ -98,6 +98,11 @@ let cardArray = [
 
 const tableroDiv=document.querySelector(`div[data-function="grid"]`);
 tableroDiv.setAttribute("class", "b-grid");
+let carta1= null
+
+let score=0
+const scoreH3=document.querySelector(`span[data-function="score"]`);
+scoreH3.textContent=score
 
 for (let i = 0; i < cardArray.length; i++) {
     const cardDiv=document.createElement('div');
@@ -105,10 +110,42 @@ for (let i = 0; i < cardArray.length; i++) {
     
     const cardImg=document.createElement("img")
     cardImg.setAttribute("class", "b-grid img");
+    cardImg.setAttribute("src", "./public/exercise-1/universe.svg");
     cardDiv.appendChild(cardImg); 
 
-    cardImg.addEventListener("click", function(card1, card2){
-        cardImg.setAttribute("src", cardArray[i].img);
-    });
+    cardImg.addEventListener("click", function(){
+// Verificar si la carta ya ha sido validada o si se hizo clic en la misma carta dos veces.
+if (cardImg.getAttribute("src") === "public/exercise-1/tick.svg" || carta1 === cardImg) {
+  return; // La jugada no es válida.
 }
+
+cardImg.setAttribute("src", cardArray[i].img); // Mostrar la imagen correspondiente al hacer clic.
+
+if (!carta1) {
+  carta1 = cardImg;
+} else {
+  // Se ha seleccionado una segunda carta.
+  if (carta1.getAttribute("src") !== cardImg.getAttribute("src")) {
+      // Las cartas no son iguales.
+      setTimeout(()=>{
+          carta1.setAttribute("src", "public/exercise-1/universe.svg");
+          cardImg.setAttribute("src", "public/exercise-1/universe.svg");
+          carta1 = null;
+      },1000)
+      }else {
+        // Las cartas son iguales, se valida la jugada.
+        setTimeout(()=>{
+        carta1.setAttribute("src", "public/exercise-1/tick.svg");
+        cardImg.setAttribute("src", "public/exercise-1/tick.svg");
+        carta1 = null;
+        score++
+        scoreH3.textContent=score
+        if(score===cardArray.length/2){
+            alert("Felicidades, has ganado!") 
+        }})
+    }
+    }
+  }
+);
+}       
 
