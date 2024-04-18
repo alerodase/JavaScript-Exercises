@@ -1,31 +1,42 @@
-// En base al ejercicio anterior, crea un botón con el texto 'X'
-// para cada uno de los p que hayas insertado y que si el
-// usuario hace click en este botón eliminemos el parrafo asociado.
+// En base al ejercicio anterior, crea un botón con el texto 'X' para cada uno de los p que hayas insertado y que si el usuario hace click en este botón eliminemos el parrafo asociado.
 
-const input = document.getElementById("input");
-const btn = document.getElementById("btn");
-const body = document.getElementsByTagName("body");
+const baseUrl = 'https://api.nationalize.io?name=';
 
-btn.addEventListener("click", () => obtenerDatos());
+const input=document.querySelector("input")
+const button=document.querySelector("button")
 
-async function obtenerDatos() {
-  const api = await fetch(`https://api.nationalize.io?name=${input.value}`);
-  const obj = await api.json();
 
-  for (const objeto of obj.country) {
-    const p = document.createElement("p");
-    document.body.appendChild(p);
-    p.innerHTML = `El nombre ${input.value} tiene un ${
-      objeto.probability * 100
-    } % de ser de ${objeto.country_id}`;
-    const btnX = document.createElement("button");
-    document.body.appendChild(btnX);
-    btnX.innerHTML = "X";
-    btnX.addEventListener("click", () => {
-      document.body.removeChild(p);
-      document.body.removeChild(btnX)
-    });
-  }
 
-  console.log(obj);
+async function obtener(){
+    const finalUrl= baseUrl + input.value
+    const api= await fetch(finalUrl);
+    const response= await api.json();
+    // p.innerHTML=JSON.stringify(response);
+    for (let i = 0; i < response.country.length; i++) {
+        const p = document.createElement("p");
+        const btn=document.createElement("button")
+   
+        // document.p.querySelector("p")
+        p.innerHTML=`el nombre ${input.value} tiene un ${Math.round(
+        response.country[i].probability * 100)}% de ser de ${response.country[i].country_id}`   
+        btn.innerHTML="X"
+
+        btn.addEventListener("click", ()=>{
+            p.remove();
+            btn.remove()
+        })
+
+        document.body.appendChild(btn)
+        document.body.appendChild(p) 
+
+      
+    }
+    console.log(response);
+
+
 }
+
+button.addEventListener("click", ()=>{
+   obtener();
+    
+})

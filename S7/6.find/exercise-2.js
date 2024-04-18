@@ -5,5 +5,8 @@ const movies = [
   { title: "Origen", stars: 5, date: 2010 },
   { title: "Your Name", stars: 5, date: 2016 },
 ];
-const encontrado= movies.find(x=>x.date===2010)
-console.log(encontrado);
+
+const found=movies.find(movie=>
+    movie.date===2010)
+
+    console.log(found);

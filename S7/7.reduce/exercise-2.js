@@ -1,4 +1,4 @@
-// Dado el siguiente array, haz una suma de todas las notas de los examenes de los alumnos que esten aprobados usando la función .reduce().
+// Dado el siguiente array, haz una suma de todos las notas de los examenes de los alumnos que esten aprobados usando la función .reduce().
 
 // El resultado sería 42.
 
@@ -14,8 +14,6 @@ const exams = [
     {name: 'Robert Kiyosaki', score: 2},
     {name: 'Keanu Reeves', score: 10}
 ];
-const sumaAprobados= exams.reduce((acc,exam)=>{
-if (exam.score>=5) {
-   return acc+exam.score
-}return acc},0)
-console.log(sumaAprobados);
+
+const suma= exams.filter(exam=>exam.score>=5).reduce((acc,val)=>acc + val.score, 0)
+console.log(suma)

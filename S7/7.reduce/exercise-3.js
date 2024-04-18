@@ -14,5 +14,5 @@ const exams = [
     {name: 'Keanu Reeves', score: 10}
 ];
 
-const media=exams.reduce((acc,exam)=>acc+exam.score/exams.length,0)
+const media= exams.reduce((acc, val)=>acc + val.score, 0)/exams.length
 console.log(media);

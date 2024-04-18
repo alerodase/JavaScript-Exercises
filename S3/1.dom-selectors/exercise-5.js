@@ -1,3 +1,5 @@
-const personajes=document.querySelectorAll('[data-function="testMe"]');
+const characters = document.querySelectorAll(`[data-function="testMe"]`)
 
-   console.log(personajes)
+characters.forEach(character=>{
+    console.log(character.innerHTML);
+})

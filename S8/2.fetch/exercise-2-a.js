@@ -1,16 +1,22 @@
-// Dado el siguiente javascript y html. Añade la funcionalidad
-//necesaria usando fetch() para hacer una consulta
-// a la api cuando se haga click en el botón,
-//pasando como parametro de la api, el valor del input.
-//https://api.nationalize.io?name=
+// Dado el siguiente javascript y html. Añade la funcionalidad necesaria usando fetch() para hacer una consulta a la api cuando se haga click en el botón, pasando como parametro de la api, el valor del input.
 
-const input = document.getElementById("input");
-const btn = document.getElementById("btn");
+const baseUrl = 'https://api.nationalize.io?name=';
 
-btn.addEventListener("click", () => obtenerDatos());
+const input=document.querySelector("input")
+const button=document.querySelector("button")
+const p = document.getElementById("pintarAPI");
 
-async function obtenerDatos() {
-  const api = await fetch(`https://api.nationalize.io?name=${input.value}`);
-  const obj = await api.json();
-  console.log(obj);
+
+async function obtener(){
+    const finalUrl= baseUrl + input.value
+    const api= await fetch(finalUrl);
+    const response= await api.json();
+    // p.innerHTML=JSON.stringify(response);
+    console.log(response);
 }
+
+button.addEventListener("click", ()=>{
+   obtener();
+    
+})
+

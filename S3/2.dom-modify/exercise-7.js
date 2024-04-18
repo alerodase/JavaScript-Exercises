@@ -1,9 +1,6 @@
-const body = document.querySelector("body");
-const p = document.querySelectorAll(".fn-remove-me");
+// Basandote en el siguiente html, elimina todos los nodos que tengan la clase .fn-remove-me
 
-p.forEach(p => {
-    p.parentNode.removeChild(p)
-});
-
-
-
+const p= document.querySelectorAll(".fn-remove-me")
+p.forEach(elemento=>{
+    elemento.parentNode.removeChild(elemento)
+})

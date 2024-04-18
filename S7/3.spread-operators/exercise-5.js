@@ -3,7 +3,10 @@
 
 
 const colors = ['rojo', 'azul', 'amarillo', 'verde', 'naranja']; 
-const colors1=[...colors]
-colors1.splice(2,1)
-const colores=colors1
-console.log(colores);
+
+
+const colors2= [...colors]
+colors2.splice(2,1)
+
+console.log(colors);
+console.log(colors2);

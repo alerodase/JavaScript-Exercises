@@ -1,7 +1,8 @@
-//Basandote en el siguiente html, añade un evento 'focus' 
-//que ejecute un console.log con el valor del input.
+// Basandote en el siguiente html, añade un evento 'focus' 
+// que ejecute un console.log con el valor del input.
 
-const input=document.querySelector('[type="text"]')
-input.addEventListener('focus',()=>{
-    console.log(input.value);
-} )
+const ip= document.querySelector("input")
+
+ip.addEventListener("focus", ()=>{
+    console.log(ip.value);
+})

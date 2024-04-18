@@ -1,6 +1,5 @@
-// Dado el siguiente javascript, usa .find() para encontrar el alien de nombre 'Cucushumushu'
-// y la mutación 'Porompompero'. Una vez que los encuentres, añade la propiedad .mutation
-// al alien con el valor de la mutación encontrada.
+// Dado el siguiente javascript, usa .find() para econtrar el alien de nombre 'Cucushumushu' y la mutación 'Porompompero'.
+//  Una vez que los encuentres, añade la propiedad .mutation al alien con el valor de la mutación encontrada.
 
 const aliens = [
   { name: "Zalamero", planet: "Eden", age: 4029 },
@@ -24,7 +23,21 @@ const mutations = [
   },
 ];
 
-const alienFound= aliens.find(x=>x.name==='Cucushumushu')
-const mutacionFound= mutations.find(x=>x.name==='Porompompero')
-alienFound.mutation=mutacionFound.name
-console.log(alienFound);
+
+const alienFound= aliens.find(alien=>
+    alien.name==="Cucushumushu")
+
+const mutationFound= mutations.find(mutation=>
+    mutation.name==="Porompompero")
+
+for (let i = 0; i < aliens.length; i++) {
+    if(aliens[i].name===alienFound.name){
+        aliens[i].mutation=mutationFound
+    }
+    
+} // tanto esta forma como la de abajo son validas
+
+// if (alienFound && mutationFound) {
+//     alienFound.mutation = mutationFound; // Asignar la propiedad mutation al alien encontrado
+//   }
+console.log(aliens);

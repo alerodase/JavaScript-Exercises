@@ -3,5 +3,6 @@
 
 const numbers = [32, 21, 63, 95, 100, 67, 43];
 
-const encontrado= numbers.find(x=>x===100)
-console.log(encontrado);
+const found= numbers.find(number=>
+    number===100)
+    console.log(found);

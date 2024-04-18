@@ -1,4 +1,4 @@
-//Usa un bucle forof para recorrer todos los juguetes y añade los que tengan más de 15 ventas (`sellCount`) al array `popularToys`. Imprimelo por consola.
+// Usa un bucle forof para recorrer todos los juguetes y añade los que tengan más de 15 ventas (`sellCount`) al array `popularToys`. Imprimelo por consola.
 
 const popularToys = [];
 const toys = [
@@ -9,13 +9,9 @@ const toys = [
   { id: 40, name: "El gato felix", sellCount: 35 },
 ];
 
-for (let i = 0; i < toys.length; i++) {
-  if (toys[i].sellCount > 15) {
-    popularToys.push(toys[i]);
-  }
+for (const toy of toys) {
+    if(toy.sellCount> 15){
+        popularToys.push(toy)
+    }
 }
-
 console.log(popularToys);
-
-
-//entiendo que necesito un for let i porque para añadir un objeto de un array en otro array necesito saber su posicion

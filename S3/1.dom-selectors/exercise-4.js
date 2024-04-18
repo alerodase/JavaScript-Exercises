@@ -1,4 +1,5 @@
-const pokemon=document.querySelectorAll('.pokemon')
-pokemon.forEach(pokemon => {
-    return console.log(pokemon)
-});
+const pokemons = document.querySelectorAll(".pokemon")
+
+pokemons.forEach(pokemon=>{
+    console.log(pokemon.innerHTML);
+})

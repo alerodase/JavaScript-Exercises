@@ -13,5 +13,6 @@ const exams = [
     {name: 'Robert Kiyosaki', score: 2},
     {name: 'Keanu Reeves', score: 10}
 ];
-const total=exams.reduce((acc,exam)=>acc+exam.score,0)
-console.log(total);
+
+const suma= exams.reduce((acc, val)=>acc+val.score,0)
+console.log(suma);

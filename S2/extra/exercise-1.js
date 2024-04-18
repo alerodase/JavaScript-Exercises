@@ -10,15 +10,13 @@ const movies = [
     {title: 'El gato con guantes', duration: 111, categories: ['comedia', 'aventura', 'animación']},
 ]
 
-let comedia=[]
-let aventura=[]
-let accion=[]
-let thriller=[]
-let animación=[]
+let categorias = []
 
 for (const movie of movies) {
-    if (movies[categories].includes('comedia')) {
-        comedia.push(movies[categories]='comedia')
+    for (const category of movie.categories) {
+        if (!categorias.includes(category)){
+            categorias.push(category)
+        }
     }
 }
-console.log(comedia.push(movies.categories='comedia'));
+console.log(categorias);

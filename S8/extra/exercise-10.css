@@ -1,8 +1,8 @@
 .b-gallery{
     display: flex;
     flex-wrap: wrap;
-    margin: 0 -16px;
-}
+    margin-bottom:150px;
+};
 
 .b-gallery--transition .b-gallery__text{
     background-color: white;

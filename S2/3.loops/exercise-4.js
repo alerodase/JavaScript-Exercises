@@ -1,4 +1,5 @@
-//Usa un bucle forof para recorrer todos los juguetes y elimina los que incluyan la palabra `gato`. Recuerda que puedes usar la función `.includes()` para comprobarlo.
+// Usa un bucle forof para recorrer todos los juguetes y elimina los que incluyan la palabra `gato`.
+// Recuerda que puedes usar la función `.includes()` para comprobarlo.
 
 const toys = [
   { id: 5, name: "Buzz MyYear" },
@@ -8,12 +9,12 @@ const toys = [
   { id: 40, name: "El gato felix" },
 ];
 
-for (let i = toys.length-1; i >= 0; i--) {
-  if (toys[i].name.includes("gato")) {
-    toys.splice(i, 1);
-  }
+let toys2 = []
+
+for (const toy of toys) {
+    if(!toy.name.includes("gato")){
+        toys2.push(toy)
+
 }
-
-console.log(toys);
-
-//entiendo que es un for let i porque necesito saber la posicion de cada objeto para poder eliminar los que incluyan la palabra gato
+}
+console.log(toys2);

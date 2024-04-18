@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 Utiliza la api `https://ghibliapi.herokuapp.com/films` para hacer un fetch y pintar sus propiedades .image y .title para hacer una galería de las películas.
 =======
 Basandonos en el ejercicio 6 (con tener la parte de llamar a los personajes nos vale pero si lo tenemos todo lo podríamos mezclar y hacer un super mega ultra ejercicio 3000) vamos a crear un formulario para añadir nuevos luchadores al elenco.
@@ -18,4 +18,4 @@ Recuerda tener arrancado el servidor json-server para poder acceder a los person
 
 
 
->>>>>>> 44257c1f97f0195d5ad7d5d683e2c2ca46cb13d5
+

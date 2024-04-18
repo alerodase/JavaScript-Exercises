@@ -1,4 +1,5 @@
-const p=document.querySelectorAll("p")
-p.forEach(p => {
-    return console.log(p)
+const parrafos = document.querySelectorAll("p")
+
+parrafos.forEach(p => {
+    console.log(p);
 });
