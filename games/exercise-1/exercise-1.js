@@ -9,62 +9,62 @@ let cardArrayOrderer = [
   {
     id: 1,
     name: "earth",
-    img: "public/exercise-1/earth.svg",
+    img: "../public/exercise-1/earth.svg",
   },
   {
     id: 2,
     name: "jupiter",
-    img: "public/exercise-1/jupiter.svg",
+    img: "../public/exercise-1/jupiter.svg",
   },
   {
     id: 3,
     name: "mars",
-    img: "public/exercise-1/mars.svg",
+    img: "../public/exercise-1/mars.svg",
   },
   {
     id: 4,
     name: "mercury",
-    img: "public/exercise-1/mercury.svg",
+    img: "../public/exercise-1/mercury.svg",
   },
   {
     id: 5,
     name: "saturn",
-    img: "public/exercise-1/saturn.svg",
+    img: "../public/exercise-1/saturn.svg",
   },
   {
     id: 6,
     name: "uranus",
-    img: "public/exercise-1/uranus.svg",
+    img: "../public/exercise-1/uranus.svg",
   },
   {
     id: 7,
     name: "earth",
-    img: "public/exercise-1/earth.svg",
+    img: "../public/exercise-1/earth.svg",
   },
   {
     id: 8,
     name: "jupiter",
-    img: "public/exercise-1/jupiter.svg",
+    img: "../public/exercise-1/jupiter.svg",
   },
   {
     id: 9,
     name: "mars",
-    img: "public/exercise-1/mars.svg",
+    img: "../public/exercise-1/mars.svg",
   },
   {
     id: 10,
     name: "mercury",
-    img: "public/exercise-1/mercury.svg",
+    img: "../public/exercise-1/mercury.svg",
   },
   {
     id: 11,
     name: "saturn",
-    img: "public/exercise-1/saturn.svg",
+    img: "../public/exercise-1/saturn.svg",
   },
   {
     id: 12,
     name: "uranus",
-    img: "public/exercise-1/uranus.svg",
+    img: "../public/exercise-1/uranus.svg",
   },
 ];
 
@@ -109,16 +109,20 @@ let attempts=0
 const attemptsH3=document.querySelector(`span[data-function="attempts"]`);
 attemptsH3.textContent=attempts
 
+let cardBlock= false
+
 for (let i = 0; i < cardArray.length; i++) {
     const cardDiv=document.createElement('div');
     tableroDiv.appendChild(cardDiv);
     
     const cardImg=document.createElement("img")
     cardImg.setAttribute("class", "b-grid img");
-    cardImg.setAttribute("src", "./public/exercise-1/universe.svg");
+    cardImg.setAttribute("src", "../public/exercise-1/universe.svg");
     cardDiv.appendChild(cardImg); 
 
     cardImg.addEventListener("click", function(){
+      if(cardBlock || cardImg.getAttribute("src") === "../public/exercise-1/tick.svg") {
+        return}
       attempts++
       attemptsH3.textContent=Math.floor(attempts/2)
 // Verificar si la carta ya ha sido validada o si se hizo clic en la misma carta dos veces.
@@ -132,18 +136,23 @@ if (!carta1) {
   carta1 = cardImg;
 } else {
   // Se ha seleccionado una segunda carta.
+  if(carta1.getAttribute("src") === cardImg.getAttribute("src") &&
+    carta1.getAttribute("src") === "../public/exercise-1/tick.svg" && cardImg.getAttribute("src") === "../public/exercise-1/tick.svg"){
+    cardBlock=true
+  }
   if (carta1.getAttribute("src") !== cardImg.getAttribute("src")) {
       // Las cartas no son iguales.
+      cardBlock=false
       setTimeout(()=>{
-          carta1.setAttribute("src", "public/exercise-1/universe.svg");
-          cardImg.setAttribute("src", "public/exercise-1/universe.svg");
+          carta1.setAttribute("src", "../public/exercise-1/universe.svg");
+          cardImg.setAttribute("src", "../public/exercise-1/universe.svg");
           carta1 = null;
       },1000)
       }else {
         // Las cartas son iguales, se valida la jugada.
         setTimeout(()=>{
-        carta1.setAttribute("src", "public/exercise-1/tick.svg");
-        cardImg.setAttribute("src", "public/exercise-1/tick.svg");
+        carta1.setAttribute("src", "../public/exercise-1/tick.svg");
+        cardImg.setAttribute("src", "../public/exercise-1/tick.svg");
         carta1 = null;
         score++
         scoreH3.textContent=score
@@ -151,7 +160,7 @@ if (!carta1) {
             alert("Felicidades, has ganado!") 
         }})
     }
-    }
+    }console.log(score);
   }
 );
 }       
