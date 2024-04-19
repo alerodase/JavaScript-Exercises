@@ -20,36 +20,55 @@
 //      Y eso estodo! aplica tus conocimientos de la mejor forma posible y...a cazar Digletts!
 
 
-let time= document.querySelector("h2[data-function='time-left']");
-let score= document.querySelector("h2[data-function='score']");
+let time = document.querySelector("h2[data-function='time-left']");
+let score = document.querySelector("h2[data-function='score']");
 
-time.textContent= 30
-score.textContent= 0
+let remainingTime = 60;
+let userScore = 0;
+let gameActive = true;
 
-let interval= setInterval(()=>{
-    time.textContent = time.textContent - 1;
-    square[randomSquare].removeAttribute('class');
-    square[randomSquare].setAttribute('class', 'b-mole');
-    square[randomSquare].removeAttribute('class');
-    square[randomSquare].setAttribute('class', 'b-square');
-    if(time.textContent==-1){
-        clearInterval(interval)
-        alert("Tu puntuación es de: "+score.textContent)
+time.textContent = remainingTime;
+score.textContent = userScore;
+
+let interval = setInterval(() => {
+    remainingTime--;
+    time.textContent = remainingTime;
+    if (remainingTime === 0 && gameActive) {
+        clearInterval(interval);
+        gameActive = false;
+        alert("Tu puntuación es de: " + userScore);
     }
-},1000)
+}, 1000);
 
-let square= document.querySelectorAll("div[data-function='square']")
-randomSquare= Math.floor(Math.random()*9)
+let squares = document.querySelectorAll("div[data-function='square']");
+let diglettPosition = null;
+let lastClickedPosition = null;
 
-function moveDiglett(){
+function moveDiglett() {
+    if (!gameActive) return;
 
+    if (diglettPosition !== null) {
+        squares[diglettPosition].removeAttribute('class');
+        squares[diglettPosition].setAttribute('class', 'b-square');
+        squares[diglettPosition].onclick = null;
+    }
+    
+    setTimeout(() => {
+        diglettPosition = Math.floor(Math.random() * 9);
+        
+        squares[diglettPosition].removeAttribute('class');
+        squares[diglettPosition].setAttribute('class', 'b-mole');
 
-    setTimeout(moveDiglett,500)
-        // square[randomSquare].removeAttribute(`class`)
-        square[randomSquare].setAttribute("class","b-mole")
-    square[randomSquare].addEventListener("click",()=>{
-        score.textContent= parseInt(score.textContent)+1
-    })
+        squares[diglettPosition].onclick = () => {
+            if (gameActive && diglettPosition !== lastClickedPosition) {
+                userScore++;
+                score.textContent = userScore;
+                lastClickedPosition = diglettPosition;
+            }
+        };
+    }, 500);
 
-    randomSquare= Math.floor(Math.random()*9)
-} moveDiglett()
+    setTimeout(moveDiglett, 1000); // Llamar a moveDiglett() después de 1 segundo
+}
+
+moveDiglett();
