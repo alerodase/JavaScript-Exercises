@@ -3,7 +3,8 @@
 // javascript que
 // proporcionamos nosotros es el que contiene la solución propuesta) para crear un juego de memoria con
 // los datos proporcionados por el siguiente array:
-
+document.addEventListener('DOMContentLoaded', function () { 
+  //  const grid = document.querySelector('.b-grid');  const loadAnimation = function () {    const loadBar = document.createElement('div');    loadBar.classList.add('load-bar');    grid.appendChild(loadBar);    loadBar.style.width = '0%';    loadBar.style.transition = 'width 0.5s';    setTimeout(function () {      loadBar.style.width = '100%';    }, 3000);  };  loadAnimation();
 
 let cardArrayOrderer = [
   {
@@ -155,4 +156,4 @@ if (!carta1) {
   }
 );
 }       
-
+})
